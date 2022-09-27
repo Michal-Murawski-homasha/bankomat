@@ -1,14 +1,23 @@
-print('Podaj imię: ')
-first_name = input()
-print('Podaj nazwisko: ')
-second_name = input()
-print('Podaj miasto: ')
-city = input()
-print('Podaj kod pocztowy: ')
-post_code = input()
-print('Podaj ulicę: ')
-street = input()
-print('Podaj nr domu: ')
-number_home = input()
-print('Podaj nr mieszkania: ')
-number_apartment = input()
+class Client:
+
+    def first_name(self):
+        first_name = str(input('Podaj imię: '))
+        return first_name
+    def second_name(self):
+        second_name = str(input('Podaj nazwisko: '))
+        return second_name
+    def city(self):
+        city = str(input('Podaj miasto: '))
+        return city
+    def post_code(self):
+        post_code = str(input('Podaj kod pocztowy: '))
+        return post_code
+    def street(self):
+        street = str(input('Podaj ulicę: '))
+        return street
+    def number_home(self):
+        number_home = int(input('Podaj nr domu: '))
+        return number_home
+    def number_apartment(self):
+        number_apartment = int(input('Podaj nr mieszkania: '))
+        return number_apartment

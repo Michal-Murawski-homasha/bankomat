@@ -16,8 +16,8 @@ class Client:
         street = str(input('Podaj ulicę: '))
         return street
     def number_home(self):
-        number_home = int(input('Podaj nr domu: '))
+        number_home = str(input('Podaj nr domu: '))
         return number_home
     def number_apartment(self):
-        number_apartment = int(input('Podaj nr mieszkania: '))
+        number_apartment = str(input('Podaj nr mieszkania: '))
         return number_apartment

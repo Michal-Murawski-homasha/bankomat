@@ -5,12 +5,17 @@ class Client:
 
     @staticmethod
     def first_name():
-        first_name = str(input('Podaj imię: '))
-        try:
-            first_name = re.match("^[A-Z][a-z]{2}[^0-9][^`~!@#$%^&*()_=+{}|,.<>?/]?")
-            return first_name
-        except TypeError:
-            print('Niepoprawne imię!')
+        first_name_input = str(input('Podaj imię: '))
+        first_name = "^[A-Z][a-z]{2}[^0-9]?"
+        index = 0
+        while index == 0:
+            try:
+                if re.search(first_name, first_name_input):
+                    return first_name
+                index = 1
+            except TypeError:
+                index = 0
+                print('Niepoprawne imię!')
 
     @staticmethod
     def second_name():

@@ -10,12 +10,13 @@ class Client:
         index = 0
         while index == 0:
             try:
-                if re.search(first_name, first_name_input):
+                if re.search(first_name, first_name_input) is True:
                     return first_name
                 index = 1
             except TypeError:
+                if re.search(first_name, first_name_input) is False:
+                    print('Niepoprawne imię!')
                 index = 0
-                print('Niepoprawne imię!')
 
     @staticmethod
     def second_name():

@@ -3,6 +3,8 @@ import sys
 import self as self
 
 import classes.client
+import classes.account
+import classes.cart
 
 
 if __name__ == '__main__':
@@ -34,10 +36,10 @@ if __name__ == '__main__':
                 classes.client.Client.create_account()
                 print('--------------------')
             elif number == 2:
-                print('2')
+                classes.account.Account.view_account()
                 print()
             elif number == 3:
-                print('3')
+                classes.cart.Cart.view_cart()
                 print()
             elif number == 4:
                 sys.exit()

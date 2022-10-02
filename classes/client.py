@@ -18,7 +18,6 @@ class Client:
             except TypeError:
                 print('Niepoprawne imię!')
 
-
     @staticmethod
     def second_name():
         index = 1
@@ -27,10 +26,9 @@ class Client:
             second_name = "^[A-Z][a-z]{2,}[^0-9]{1,}?"
             try:
                 if re.search(second_name, second_name_input):
-                    return  second_name
+                    return second_name
             except TypeError:
                 print('Niepoprawne nazwisko!')
-
 
     @staticmethod
     def city():
@@ -44,7 +42,6 @@ class Client:
             except TypeError:
                 print('Niepoprawna nazwa miasta!')
 
-
     @staticmethod
     def post_code():
         index = 1
@@ -56,7 +53,6 @@ class Client:
                     return post_code
             except TypeError:
                 print("Niepoprawny format kodu pocztowego!")
-
 
     @staticmethod
     def street():
@@ -70,7 +66,6 @@ class Client:
             except TypeError:
                 print('Niepoprawna ulica!')
 
-
     @staticmethod
     def number_home():
         index = 1
@@ -82,7 +77,6 @@ class Client:
                     return number_home
             except TypeError:
                 print('Nr domu musi być cyfrą!')
-
 
     @staticmethod
     def number_apartment():
@@ -96,7 +90,6 @@ class Client:
             except TypeError:
                 print('Nr domu musi być cyfrą! (0 jeżeli nie posiada)!')
 
-
     @staticmethod
     def creat_number_acount():
         index = 1
@@ -105,7 +98,6 @@ class Client:
             print(random.randint(0, 9), end='')
             index += 1
         print()
-
 
     @staticmethod
     def creat_login():
@@ -116,16 +108,15 @@ class Client:
             index += 1
         print()
 
-
     @staticmethod
     def creat_pin():
         pin = input('Utwórz 4 cyfrowy PIN: ')
 
-
     @staticmethod
     def create_account():
-        mysql_connect = connection.Connection.connected()
         query = "INSERT INTO dane_klienta (imieKlienta, nazwiskoKlienta, kodPocztowy, miasto, ulica, numerDomu, " \
                 "numerMieszkania) VALUES (%s, %s, %s, %s, %s, %s, %s)"
         values = (first_name, second_name, post_code, city, street, number_home, number_apartment)
-        return mysql_connect.execute(query, values)
+        mysql_connect = connection.Connection.connected()
+        mysql_connect.execute(query, values)
+        connection.Connection.connected()

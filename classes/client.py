@@ -1,6 +1,8 @@
 import random
 import re
 
+from classes import connection
+
 
 class Client:
 
@@ -102,6 +104,7 @@ class Client:
         while index <= 26:
             print(random.randint(0, 9), end='')
             index += 1
+        print()
 
 
     @staticmethod
@@ -117,3 +120,12 @@ class Client:
     @staticmethod
     def creat_pin():
         pin = input('Utwórz 4 cyfrowy PIN: ')
+
+
+    @staticmethod
+    def create_account():
+        mysql_connect = connection.Connection.connected()
+        query = "INSERT INTO dane_klienta (imieKlienta, nazwiskoKlienta, kodPocztowy, miasto, ulica, numerDomu, " \
+                "numerMieszkania) VALUES (%s, %s, %s, %s, %s, %s, %s)"
+        values = (first_name, second_name, post_code, city, street, number_home, number_apartment)
+        return mysql_connect.execute(query, values)

@@ -32,17 +32,17 @@ if __name__ == '__main__':
                 client.street()
                 client.number_home()
                 client.number_apartment()
-                client.creat_number_acount()
+                client.create_number_acount()
                 print('--------------------')
-                classes.client.Client.creat_login(self)
-                classes.client.Client.creat_pin(self)
-                classes.client.Client.create_account(self)
+                client.creat_login()
+                client.creat_pin()
+                client.create_account()
                 print('--------------------')
             elif number == 2:
-                classes.atm.Atm.login_atm()
+                classes.atm.Atm.login_atm(self)
                 print()
             elif number == 3:
-                classes.deposit.Deposit.deposit_amount()
+                classes.deposit.Deposit.deposit_amount(self)
                 print()
             elif number == 4:
                 sys.exit()

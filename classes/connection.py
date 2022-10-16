@@ -3,7 +3,7 @@ import mysql.connector
 
 class Connection:
     def connected(self):
-        self.polacz = mysql.connector.connect(
+        self.mydb = mysql.connector.connect(
             host="localhost",
             user="root",
             password="",

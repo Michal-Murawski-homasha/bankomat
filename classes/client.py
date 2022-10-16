@@ -93,9 +93,9 @@ class Client(Connection):
         index = 1
         print('Twój numer konto: ', end='')
         while index <= 26:
-            self.rand_number = random.randint(0, 9)
-            self.print_number = print(self.rand_number, end='')
-            self.account_number = [self.rand_number]
+            self.rand_number[int] = random.randint(0, 9)
+            print(self.rand_number, end='')
+            self.account_number[int] = [self.rand_number]
             index += 1
         print()
 

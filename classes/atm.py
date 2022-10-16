@@ -7,9 +7,9 @@ class Atm(Connection):
         self.pin_code = input('Podaj PIN: ')
         sql = 'SELECT * FROM kontoKlienta'
         data = []
-        stmt = Connection.connected(self)
-        stmt.execute(sql, data)
-        result = stmt.fetchall()
+        mysql_connect = self.mydb
+        mysql_connect.execute(sql, data)
+        result = mysql_connect.fetchall()
         print(result)
         for x in result:
             print(x)

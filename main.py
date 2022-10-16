@@ -39,10 +39,12 @@ if __name__ == '__main__':
                 client.create_account()
                 print('--------------------')
             elif number == 2:
-                classes.atm.Atm.login_atm(self)
+                atm_service = classes.atm.Atm()
+                atm_service.login_atm()
                 print()
             elif number == 3:
-                classes.deposit.Deposit.deposit_amount(self)
+                deposit_service = classes.deposit.Deposit()
+                deposit_service.deposit_amount()
                 print()
             elif number == 4:
                 sys.exit()

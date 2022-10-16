@@ -1,14 +1,12 @@
 import random
 import re
-import main
 
 from classes import connection
 
 
 class Client:
 
-    @staticmethod
-    def first_name():
+    def first_name(self):
         index = 1
         while index == 1:
             first_name_input = str(input('Podaj imię: '))
@@ -19,8 +17,7 @@ class Client:
             except TypeError:
                 print('Niepoprawne imię!')
 
-    @staticmethod
-    def second_name():
+    def second_name(self):
         index = 1
         while index == 1:
             second_name_input = str(input('Podaj nazwisko: '))
@@ -31,8 +28,7 @@ class Client:
             except TypeError:
                 print('Niepoprawne nazwisko!')
 
-    @staticmethod
-    def city():
+    def city(self):
         index = 1
         while index == 1:
             city_input = str(input('Podaj miasto: '))
@@ -43,8 +39,7 @@ class Client:
             except TypeError:
                 print('Niepoprawna nazwa miasta!')
 
-    @staticmethod
-    def post_code():
+    def post_code(self):
         index = 1
         while index == 1:
             post_code_input = str(input('Podaj kod pocztowy: '))
@@ -55,8 +50,7 @@ class Client:
             except TypeError:
                 print("Niepoprawny format kodu pocztowego!")
 
-    @staticmethod
-    def street():
+    def street(self):
         index = 1
         while index == 1:
             street_input = str(input('Podaj ulicę: '))
@@ -67,8 +61,7 @@ class Client:
             except TypeError:
                 print('Niepoprawna ulica!')
 
-    @staticmethod
-    def number_home():
+    def number_home(self):
         index = 1
         while index == 1:
             number_home_input = str(input('Podaj nr domu: '))
@@ -79,8 +72,7 @@ class Client:
             except TypeError:
                 print('Nr domu musi być cyfrą!')
 
-    @staticmethod
-    def number_apartment():
+    def number_apartment(self):
         index = 1
         while index == 1:
             number_apartment_input = str(input('Podaj nr mieszkania: '))
@@ -91,8 +83,7 @@ class Client:
             except TypeError:
                 print('Nr domu musi być cyfrą! (0 jeżeli nie posiada)!')
 
-    @staticmethod
-    def creat_number_acount():
+    def creat_number_acount(self):
         index = 1
         print('Twój numer konto: ', end='')
         while index <= 26:
@@ -100,8 +91,7 @@ class Client:
             index += 1
         print()
 
-    @staticmethod
-    def creat_login():
+    def creat_login(self):
         index = 1
         print('Twój login: ', end='')
         while index <= 4:
@@ -109,12 +99,10 @@ class Client:
             index += 1
         print()
 
-    @staticmethod
-    def creat_pin():
+    def creat_pin(self):
         pin = input('Utwórz 4 cyfrowy PIN: ')
 
-    @staticmethod
-    def create_account(first_name, second_name, city, post_code, street, number_home, number_apartment):
+    def create_account(self, first_name, second_name, city, post_code, street, number_home, number_apartment):
         query = "INSERT INTO dane_klienta (imieKlienta, nazwiskoKlienta, miasto, kodPocztowy, ulica, numerDomu, numerMieszkania) VALUES (%s, %s, %s, %s, %s, %s, %s)"
         values = [first_name, second_name, city, post_code, street, number_home, number_apartment]
         mysql_connect = connection.Connection.connected()

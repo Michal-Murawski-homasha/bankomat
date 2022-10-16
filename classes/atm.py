@@ -1,14 +1,13 @@
-from classes import connection
+from classes.connection import Connection
 
 
-class Atm:
-    @staticmethod
-    def login_atm():
+class Atm(Connection):
+    def login_atm(self):
         input('Podaj nr karty: ')
         input('Podaj PIN: ')
         sql = 'SELECT * FROM konto_klienta'
         data = []
-        stmt = connection.Connection.connected()
+        stmt = Connection.connected()
         stmt.execute(sql, data)
         result = stmt.fetchall()
         print(result)

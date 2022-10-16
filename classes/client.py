@@ -1,103 +1,93 @@
 import random
 import re
 
-from classes import connection
+from classes.connection import Connection
 
 
-class Client:
-
-    def __init__(self):
-        self.first_name_input = None
-        self.first_name = None
-        self.second_name_input = None
-        self.second_name = None
-        self.city_input = None
-        self.city = None
-        self.post_code_input = None
-        self.post_code = None
-        self.street_input = None
-        self.street = None
-        self.number_home_input = None
-        self.number_home = None
-        self.number_apartment_input = None
-        self.number_apartment = None
-
-    def first_name(self, first_name_input, first_name):
+class Client(Connection):
+    def first_name(self):
         index = 1
         while index == 1:
             self.first_name_input = str(input('Podaj imię: '))
-            self.first_name = "^[A-Z][a-z]{2,}[^0-9]{1,}?"
+            self.first_name_validate = "^[A-Z][a-z]{1,}[^0-9]{1,}?"
             try:
-                if re.search(first_name, first_name_input):
-                    return first_name_input
+                if re.search(self.first_name, self.first_name_input):
+                    return 0
             except TypeError:
                 print('Niepoprawne imię!')
+                return 1
 
-    def second_name(self, second_name_input, second_name):
+    def second_name(self):
         index = 1
         while index == 1:
             self.second_name_input = str(input('Podaj nazwisko: '))
-            self.second_name = "^[A-Z][a-z]{2,}[^0-9]{1,}?"
+            self.second_name_validate = "^[A-Z][a-z]{2,}[^0-9]{1,}?"
             try:
-                if re.search(second_name, second_name_input):
-                    return second_name
+                if re.search(self.second_name, self.second_name_input):
+                    return 0
             except TypeError:
                 print('Niepoprawne nazwisko!')
+                return 1
 
-    def city(self, city_input, city):
+    def city(self):
         index = 1
         while index == 1:
             self.city_input = str(input('Podaj miasto: '))
-            self.city = "^[A-Z][a-z]{2,}|[A-Z][a-z]{2,}([ ]{1}|[-]{1})[A-Z][a-z]?"
+            self.city_validate = "^[A-Z][a-z]{2,}|[A-Z][a-z]{2,}([ ]{1}|[-]{1})[A-Z][a-z]?"
             try:
-                if re.search(city, city_input):
-                    return city
+                if re.search(self.city, self.city_input):
+                    return 0
             except TypeError:
                 print('Niepoprawna nazwa miasta!')
+                return 1
 
-    def post_code(self, post_code_input, post_code):
+    def post_code(self):
         index = 1
         while index == 1:
             self.post_code_input = str(input('Podaj kod pocztowy: '))
-            self.post_code = "^[0-9]{2}[-]{1}[0-9]{3}?"
+            self.post_code_validate = "^[0-9]{2}[-]{1}[0-9]{3}?"
             try:
-                if re.search(post_code, post_code_input):
-                    return post_code
+                if re.search(self.post_code, self.post_code_input):
+                    return 0
             except TypeError:
                 print("Niepoprawny format kodu pocztowego!")
+                return 1
 
-    def street(self, street_input, street):
+    def street(self):
         index = 1
         while index == 1:
             self.street_input = str(input('Podaj ulicę: '))
-            self.street = "^[A-Z][a-z]{2,}|[A-Z][a-z]{2,}[ ][A-Z][a-z]{2,}?"
+            self.street_validate = "^[A-Z][a-z]{2,}|[A-Z][a-z]{2,}[ ][A-Z][a-z]{2,}?"
             try:
-                if re.search(street, street_input):
-                    return street
+                if re.search(self.street, self.street_input):
+                    return 0
             except TypeError:
                 print('Niepoprawna ulica!')
+                return 1
 
-    def number_home(self, number_home_input, number_home):
+    def number_home(self):
         index = 1
         while index == 1:
             self.number_home_input = str(input('Podaj nr domu: '))
-            self.number_home = "^[0-9]{1,}?"
+            self.number_home_validate = "^[0-9]{1,}?"
             try:
-                if re.search(number_home, number_home_input):
-                    return number_home
+                if re.search(self.number_home, self.number_home_input):
+                    return 0
             except TypeError:
                 print('Nr domu musi być cyfrą!')
+                return 1
 
-    def number_apartment(self, number_apartment_input, number_apartment):
+    def number_apartment(self):
         index = 1
         while index == 1:
             self.number_apartment_input = str(input('Podaj nr mieszkania: '))
-            self.number_apartment = "^[0-9]{1}?"
+            self.number_apartment_validate = "^[0-9]{1}?"
             try:
-                if re.search(number_apartment, number_apartment_input):
-                    return number_apartment
+                if re.search(self.number_apartment, self.number_apartment_input):
+                    return 0
             except TypeError:
                 print('Nr domu musi być cyfrą! (0 jeżeli nie posiada)!')
+                return 1
 
     def creat_number_acount(self):
         index = 1
@@ -118,9 +108,9 @@ class Client:
     def creat_pin(self):
         pin = input('Utwórz 4 cyfrowy PIN: ')
 
-    def create_account(self, first_name, second_name, city, post_code, street, number_home, number_apartment):
+    def create_account(self):
         query = "INSERT INTO dane_klienta (imieKlienta, nazwiskoKlienta, miasto, kodPocztowy, ulica, numerDomu, numerMieszkania) VALUES (%s, %s, %s, %s, %s, %s, %s)"
-        values = [first_name, second_name, city, post_code, street, number_home, number_apartment]
+        values = [self.first_name_input, self.second_name_input, self.city_input, self.post_code_input, self.street_input, self.number_home_input, self.number_apartment_input]
         mysql_connect = connection.Connection.connected()
         mysql_connect.execute(query, values)
         connection.Connection.connected()

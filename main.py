@@ -23,6 +23,8 @@ if __name__ == '__main__':
 
             if number == 1:
                 client = classes.client.Client()
+                print(client.test())
+                print('--------------------')
                 client.first_name()
                 client.second_name()
                 client.city()
@@ -32,9 +34,9 @@ if __name__ == '__main__':
                 client.number_apartment()
                 client.creat_number_acount()
                 print('--------------------')
-                classes.client.Client.creat_login()
-                classes.client.Client.creat_pin()
-                classes.client.Client.create_account()
+                classes.client.Client.creat_login(self)
+                classes.client.Client.creat_pin(self)
+                classes.client.Client.create_account(self)
                 print('--------------------')
             elif number == 2:
                 classes.atm.Atm.login_atm()

@@ -1,7 +1,6 @@
 
 
 class Cart:
-    @staticmethod
-    def view_cart():
+    def view_cart(self):
         print('Numer karty: ')
         print('PIN: ')

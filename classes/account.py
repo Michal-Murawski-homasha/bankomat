@@ -1,8 +1,7 @@
 
 
 class Account:
-    @staticmethod
-    def view_account():
+    def view_account(self):
         print('Numer konta: ')
         print('Saldo: ')
 

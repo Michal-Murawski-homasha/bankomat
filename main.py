@@ -32,7 +32,7 @@ if __name__ == '__main__':
                 client.street()
                 client.number_home()
                 client.number_apartment()
-                client.create_number_acount()
+                client.create_account_number()
                 print('--------------------')
                 client.creat_login()
                 client.creat_pin()

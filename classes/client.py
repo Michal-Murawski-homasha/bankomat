@@ -93,15 +93,15 @@ class Client(Connection):
         index = 1
         print('Twój numer konto: ', end='')
         while index <= 26:
-            self.rand_number[int] = random.randint(0, 9)
-            print(self.rand_number, end='')
-            self.account_number[int] = [self.rand_number]
+            self.rand_number = random.randint(0, 9)
+            self.print_number = print(self.rand_number, end='')
+            self.account_number = [self.rand_number]
             index += 1
         print()
 
     def creat_login(self):
         index = 1
-        print('Twój numer konta: ', end='')
+        print('Twój login: ', end='')
         while index <= 4:
             print(random.randint(0, 9), end='')
             index += 1
@@ -111,8 +111,8 @@ class Client(Connection):
         pin = input('Utwórz 4 cyfrowy PIN: ')
 
     def create_account(self):
-        mysql_connect = self.mydb.cursor()
-        query = "INSERT INTO daneKlienta (imieKlienta, nazwiskoKlienta, miasto, kodPocztowy, ulica, numerDomu, numerMieszkania)" \
+        mysql_connect = Connection.connected(self)
+        query = "INSERT INTO dane_klienta (imieKlienta, nazwiskoKlienta, miasto, kodPocztowy, ulica, numerDomu, numerMieszkania)" \
                 "VALUES (%s, %s, %s, %s, %s, %s, %s)"
         values = [self.first_name_input, self.second_name_input, self.city_input, self.post_code_input,
                   self.street_input, self.number_home_input, self.number_apartment_input]
